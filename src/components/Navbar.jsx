@@ -2,9 +2,9 @@
 const Navbar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary p-4">
                 <div className="container">
-                    <a className="navbar-brand fw-bold text-primary" href="#">skillBridge</a>
+                    <a className="navbar-brand fw-bold" href="#">skill<span className="text-primary">Bridge</span> </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
