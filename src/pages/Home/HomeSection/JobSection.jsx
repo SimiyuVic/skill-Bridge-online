@@ -5,16 +5,28 @@ import JobCard from "../../../components/JobCards";
 const JobSection = () => {
 
   const [jobs, setJobs] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  useEffect(()=>{
-    fetch("http://localhost:4000/jobs")
-    .then((response)=>{
-      return response.json()
-    })
-    .then((data)=>{
-      setJobs(data)
-    })
-  });
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:4000/jobs")
+        .then((response) => {
+          if (!response.ok) {
+            throw Error("Cannot Fetch Data");
+          }
+          return response.json(); //parsing
+        })
+        .then((data) => {
+          setJobs(data);
+          setLoading(false); //stop loading after you have gotten your dat
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false); //stop loading incase you encounter an error
+        })
+    }, 3000);
+  }, []);
 
   return (
     <div>
@@ -27,7 +39,9 @@ const JobSection = () => {
           They are waiting for your skills
         </p>
         {/* Nest the card component */}
-        {jobs && <JobCard allJobs={jobs.filter(job=>job.discretion === "Remote")} />}
+        {error && <div className="text-danger fw-bold"> {error} </div>}
+        {loading && <div className="text-success fw-bold"> Loading Data . . .</div>}
+        {jobs && <JobCard allJobs={jobs.filter(job => job.discretion === "Remote")} />}
       </div>
     </div>
   );
