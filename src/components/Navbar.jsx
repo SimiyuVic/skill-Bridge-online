@@ -108,7 +108,8 @@ const Navbar = () => {
 
                     <Link
                         to="/register"
-                        className="btn btn-primary px-3"
+                        className="btn  px-3"
+                        style={{ backgroundColor: "yellowgreen"}}
                     >
                         Get Started
                     </Link>

@@ -6,6 +6,8 @@
             "companyName": "CloudScale Systems",
             "companyLocation": "Austin, TX",
             "discretion": "Hybrid",
+            "jobRole": "describe what you will be doing",
+            "jobRequirements": "",
             "jobDescription": "Design and implement scalable microservices using Node.js, Go, and PostgreSQL. Optimize API performance and manage AWS cloud infrastructure."
         },
         {

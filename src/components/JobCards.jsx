@@ -1,4 +1,5 @@
 import { CiLocationOn } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const JobCards = ({ allJobs }) => {
     return (
@@ -42,9 +43,12 @@ const JobCards = ({ allJobs }) => {
                                         View opportunity
                                     </small>
 
-                                    <button className="btn btn-primary btn-sm rounded-pill px-3">
+                                    <Link 
+                                    className="btn btn-primary btn-sm rounded-pill px-3"
+                                    to={`/job-description/${job.id}`}
+                                    >
                                         More Details
-                                    </button>
+                                    </Link>
                                 </div>
 
                             </div>
