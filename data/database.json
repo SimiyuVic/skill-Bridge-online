@@ -1,104 +1,147 @@
 {
-    "jobs": [
-        {
-            "id": 2,
-            "jobTitle": "Backend Engineer",
-            "companyName": "CloudScale Systems",
-            "companyLocation": "Austin, TX",
-            "discretion": "Hybrid",
-            "jobRole": "describe what you will be doing",
-            "jobRequirements": "",
-            "jobDescription": "Design and implement scalable microservices using Node.js, Go, and PostgreSQL. Optimize API performance and manage AWS cloud infrastructure."
-        },
-        {
-            "id": 3,
-            "jobTitle": "Full Stack Developer",
-            "companyName": "Nexus Digital Labs",
-            "companyLocation": "New York, NY",
-            "discretion": "Remote",
-            "jobDescription": "Develop end-to-end web applications utilizing Next.js, Python, and GraphQL. Participate in architecture decisions and code reviews across the entire stack."
-        },
-        {
-            "id": 4,
-            "jobTitle": "DevOps Engineer",
-            "companyName": "DataFlow Networks",
-            "companyLocation": "Seattle, WA",
-            "discretion": "On-site",
-            "jobDescription": "Maintain and enhance automated CI/CD pipelines, manage Kubernetes clusters, and implement infrastructure as code using Terraform."
-        },
-        {
-            "id": 5,
-            "jobTitle": "UI/UX Designer",
-            "companyName": "PixelCraft Studios",
-            "companyLocation": "Los Angeles, CA",
-            "discretion": "Hybrid",
-            "jobDescription": "Create user-centered wireframes, interactive prototypes, and design systems in Figma. Conduct usability testing to refine product interfaces."
-        },
-        {
-            "id": 6,
-            "jobTitle": "Data Scientist",
-            "companyName": "Insight Analytics",
-            "companyLocation": "Boston, MA",
-            "discretion": "Remote",
-            "jobDescription": "Build predictive machine learning models in Python, write complex SQL queries, and deliver data-driven insights to executive stakeholders."
-        },
-        {
-            "id": 7,
-            "jobTitle": "iOS Engineer",
-            "companyName": "MobilePulse Innovations",
-            "companyLocation": "Chicago, IL",
-            "discretion": "Hybrid",
-            "jobDescription": "Develop native iOS applications using Swift and SwiftUI. Focus on offline-first caching, smooth UI animations, and App Store delivery."
-        },
-        {
-            "id": 8,
-            "jobTitle": "Product Manager",
-            "companyName": "Vanguard Tech",
-            "companyLocation": "Denver, CO",
-            "discretion": "Remote",
-            "jobDescription": "Define product roadmaps, write detailed user stories, and lead cross-functional agile teams from feature inception through deployment."
-        },
-        {
-            "id": 9,
-            "jobTitle": "Cybersecurity Analyst",
-            "companyName": "Aegis Defense Systems",
-            "companyLocation": "Washington, DC",
-            "discretion": "On-site",
-            "jobDescription": "Monitor security operations centers (SOC), conduct vulnerability assessments, and implement incident response strategies to protect enterprise infrastructure."
-        },
-        {
-            "id": 10,
-            "jobTitle": "Site Reliability Engineer (SRE)",
-            "companyName": "StreamLine Media",
-            "companyLocation": "Atlanta, GA",
-            "discretion": "Remote",
-            "jobDescription": "Ensure 99.99% system availability through automated monitoring, incident management, and chaos engineering practices using Prometheus and Grafana."
-        },
-        {
-            "id": 11,
-            "jobTitle": "Machine Learning Engineer",
-            "companyName": "Cognitive AI Labs",
-            "companyLocation": "San Jose, CA",
-            "discretion": "Hybrid",
-            "jobDescription": "Train and deploy deep learning models using PyTorch and Hugging Face. Optimize LLM inference pipelines for production real-time applications."
-        },
-        {
-            "id": 12,
-            "jobTitle": "Android Developer",
-            "companyName": "Appify Global",
-            "companyLocation": "Toronto, ON",
-            "discretion": "Remote",
-            "jobDescription": "Architect and maintain native Android apps using Kotlin and Jetpack Compose. Implement robust unit and UI automated test suites."
-        },
-        {
-            "id": 13,
-            "jobTitle": "QA Automation Engineer",
-            "companyName": "QualityFirst Solutions",
-            "companyLocation": "Raleigh, NC",
-            "discretion": "Hybrid",
-            "jobDescription": "Design and execute automated testing suites for web and mobile platforms using Playwright, Cypress, and Selenium within continuous integration workflows."
-        }
-    ],
-    "employers": [],
-    "jobseekers": []
+  "jobs": [
+    {
+      "id": "2",
+      "jobTitle": "Backend Engineer",
+      "companyName": "CloudScale Systems",
+      "companyLocation": "Austin, TX",
+      "discretion": "Hybrid",
+      "jobRole": "describe what you will be doing",
+      "jobRequirements": "",
+      "jobDescription": "Design and implement scalable microservices using Node.js, Go, and PostgreSQL. Optimize API performance and manage AWS cloud infrastructure."
+    },
+    {
+      "id": "3",
+      "jobTitle": "Full Stack Developer",
+      "companyName": "Nexus Digital Labs",
+      "companyLocation": "New York, NY",
+      "discretion": "Remote",
+      "jobDescription": "Develop end-to-end web applications utilizing Next.js, Python, and GraphQL. Participate in architecture decisions and code reviews across the entire stack."
+    },
+    {
+      "id": "4",
+      "jobTitle": "DevOps Engineer",
+      "companyName": "DataFlow Networks",
+      "companyLocation": "Seattle, WA",
+      "discretion": "On-site",
+      "jobDescription": "Maintain and enhance automated CI/CD pipelines, manage Kubernetes clusters, and implement infrastructure as code using Terraform."
+    },
+    {
+      "id": "5",
+      "jobTitle": "UI/UX Designer",
+      "companyName": "PixelCraft Studios",
+      "companyLocation": "Los Angeles, CA",
+      "discretion": "Hybrid",
+      "jobDescription": "Create user-centered wireframes, interactive prototypes, and design systems in Figma. Conduct usability testing to refine product interfaces."
+    },
+    {
+      "id": "6",
+      "jobTitle": "Data Scientist",
+      "companyName": "Insight Analytics",
+      "companyLocation": "Boston, MA",
+      "discretion": "Remote",
+      "jobDescription": "Build predictive machine learning models in Python, write complex SQL queries, and deliver data-driven insights to executive stakeholders."
+    },
+    {
+      "id": "7",
+      "jobTitle": "iOS Engineer",
+      "companyName": "MobilePulse Innovations",
+      "companyLocation": "Chicago, IL",
+      "discretion": "Hybrid",
+      "jobDescription": "Develop native iOS applications using Swift and SwiftUI. Focus on offline-first caching, smooth UI animations, and App Store delivery."
+    },
+    {
+      "id": "8",
+      "jobTitle": "Product Manager",
+      "companyName": "Vanguard Tech",
+      "companyLocation": "Denver, CO",
+      "discretion": "Remote",
+      "jobDescription": "Define product roadmaps, write detailed user stories, and lead cross-functional agile teams from feature inception through deployment."
+    },
+    {
+      "id": "9",
+      "jobTitle": "Cybersecurity Analyst",
+      "companyName": "Aegis Defense Systems",
+      "companyLocation": "Washington, DC",
+      "discretion": "On-site",
+      "jobDescription": "Monitor security operations centers (SOC), conduct vulnerability assessments, and implement incident response strategies to protect enterprise infrastructure."
+    },
+    {
+      "id": "10",
+      "jobTitle": "Site Reliability Engineer (SRE)",
+      "companyName": "StreamLine Media",
+      "companyLocation": "Atlanta, GA",
+      "discretion": "Remote",
+      "jobDescription": "Ensure 99.99% system availability through automated monitoring, incident management, and chaos engineering practices using Prometheus and Grafana."
+    },
+    {
+      "id": "11",
+      "jobTitle": "Machine Learning Engineer",
+      "companyName": "Cognitive AI Labs",
+      "companyLocation": "San Jose, CA",
+      "discretion": "Hybrid",
+      "jobDescription": "Train and deploy deep learning models using PyTorch and Hugging Face. Optimize LLM inference pipelines for production real-time applications."
+    },
+    {
+      "id": "12",
+      "jobTitle": "Android Developer",
+      "companyName": "Appify Global",
+      "companyLocation": "Toronto, ON",
+      "discretion": "Remote",
+      "jobDescription": "Architect and maintain native Android apps using Kotlin and Jetpack Compose. Implement robust unit and UI automated test suites."
+    },
+    {
+      "id": "13",
+      "jobTitle": "QA Automation Engineer",
+      "companyName": "QualityFirst Solutions",
+      "companyLocation": "Raleigh, NC",
+      "discretion": "Hybrid",
+      "jobDescription": "Design and execute automated testing suites for web and mobile platforms using Playwright, Cypress, and Selenium within continuous integration workflows."
+    }
+  ],
+  "contact": [
+    {
+      "name": "Victor Simiyu",
+      "email": "charlesvictor369@gmail.com",
+      "phone": "+254798161654",
+      "message": "Test submission",
+      "id": "9OgNRvZfVz8"
+    },
+    {
+      "name": "Taylor Adams",
+      "email": "taylor@gmail.com",
+      "phone": "+254798161654",
+      "message": "Test submission for taylor",
+      "id": "zCIGJ-yFEaI"
+    },
+    {
+      "name": "Official Vic",
+      "email": "vic@gmail.com",
+      "phone": "0798161654",
+      "message": "Test redirect",
+      "id": "NWa2RdaCbYw"
+    },
+    {
+      "name": "Victor Simiyu",
+      "email": "charlesvictor369@gmail.com",
+      "phone": "+254798161654",
+      "message": "Test toast",
+      "id": "AFtPAih2nTo"
+    },
+    {
+      "name": "Victor Simiyu",
+      "email": "charlesvictor369@gmail.com",
+      "phone": "+254798161654",
+      "message": "test error",
+      "id": "MevvGdiGmwo"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "message": "",
+      "id": "ebL2N29xBmM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
