@@ -29,10 +29,10 @@ const Contact = () => {
         })
         .then(()=>{
             redirect("/");
-            toast.success("Message send succesfully")
+            toast.success("Message send succesfully");
         })
         .catch((err)=>{
-            toast.error(err.message)
+            toast.error(err.message);
         })
         .finally(
             setName(""),

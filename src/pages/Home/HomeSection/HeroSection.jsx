@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 const HeroSection = () => {
     return (
         <div>
@@ -30,6 +30,10 @@ const HeroSection = () => {
                                 <span><i className="bi bi-check-circle-fill me-2"></i></span>
                                 Land an Interview
                             </h6>
+
+                            <Link className="btn btn-primary" to="/signup">
+                                Get Started
+                            </Link>
                         </div>
                     </div>
                     <div className="col-md-6">

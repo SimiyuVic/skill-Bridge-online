@@ -107,9 +107,8 @@ const Navbar = () => {
                     {/* Right Side Buttons */}
 
                     <Link
-                        to="/register"
-                        className="btn  px-3"
-                        style={{ backgroundColor: "yellowgreen"}}
+                        to="/signup"
+                        className="btn  px-3 btn btn-primary"
                     >
                         Get Started
                     </Link>

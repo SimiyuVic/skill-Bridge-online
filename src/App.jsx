@@ -7,6 +7,10 @@ import About from "./pages/AboutPage.jsx"
 import Contact from "./pages/ContactPage.jsx"
 import JobDetails from "./pages/JobDetails.jsx"
 import { Toaster } from "react-hot-toast"
+import Signup from "./pages/auth/SignUp.jsx"
+import JobSeekerRegister from "./pages/auth/signup/JobSeeker.jsx"
+import EmployerRegister from "./pages/auth/signup/Employer.jsx"
+import Login from "./pages/auth/Login.jsx"
 
 
 function App() {
@@ -21,6 +25,10 @@ function App() {
         <Route path="/about-us" element={ <About /> } />
         <Route path="/contact-us" element={ <Contact />  } />
         <Route path="/job-description/:id" element={ <JobDetails /> }  />
+        <Route path="/login" element={ <Login /> } />
+        <Route path="/signup" element={ <Signup /> } />
+        <Route path="/job-seeker-register" element={ <JobSeekerRegister /> } />
+        <Route path="/employer-register" element={ <EmployerRegister />  } />
       </Routes>
 
       
