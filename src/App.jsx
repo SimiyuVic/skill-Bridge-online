@@ -10,6 +10,12 @@ import JobSeekerRegister from "./pages/auth/signup/JobSeeker.jsx"
 import EmployerRegister from "./pages/auth/signup/Employer.jsx"
 import Login from "./pages/auth/Login.jsx"
 import PublicLayout from "./layout/Public.jsx"
+import Adminlayout from "./layout/AdminLayout.jsx"
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx"
+import Employers from "./pages/admin/Employers.jsx"
+import AdminJobSeeker from "./pages/admin/AdminJobSeeker.jsx"
+import AdminJobs from "./pages/admin/AdminJobs.jsx"
+import AdminSettings from "./pages/admin/AdminSettings.jsx"
 
 
 function App() {
@@ -37,6 +43,13 @@ function App() {
         </Route>
 
         {/* Admin Routes */}
+        <Route path="/admin" element={ <Adminlayout /> } >
+          <Route index element={ <AdminDashboard /> } />
+          <Route path="employers" element={ <Employers /> } />
+          <Route path="job-seeker" element={ <AdminJobSeeker /> } />
+          <Route path="jobs" element={ <AdminJobs /> } />
+          <Route path="settings" element={ <AdminSettings /> } /> 
+        </Route>
 
         {/* Employer routes */}
 
