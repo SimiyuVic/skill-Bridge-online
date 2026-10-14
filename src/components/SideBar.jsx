@@ -4,7 +4,7 @@ const SideBar = ({ title, links }) => {
     return (
         <div>
             <h4>
-                {title}
+                {title} 
             </h4>
             <div className="d-flex flex-column gap-2">
                 {links.map((link) => (

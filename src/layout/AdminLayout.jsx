@@ -38,7 +38,7 @@ const Adminlayout = () => {
             path: "/admin/settings",
             icon: <IoSettings />
         },
-    ]
+    ];
 
     return (
         <>

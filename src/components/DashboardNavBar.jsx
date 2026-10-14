@@ -5,10 +5,10 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 const DashboardNav = () => {
     return (
         <div className="d-flex justify-content-between">
-            <div>
-                <h5>
+            <div className="text-light">
+                <h5 >
                     Welcome Admin
-                </h5>
+                </h5> 
                 <p>
                     Manage your account from a central place.
                 </p>
