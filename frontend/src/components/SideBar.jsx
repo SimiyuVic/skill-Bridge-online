@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const SideBar = ({ title, links }) => {
     return (
         <div>
-            <h4>
+            <h4 className="text-white">
                 {title} 
             </h4>
             <div className="d-flex flex-column gap-2">
