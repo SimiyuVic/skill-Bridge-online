@@ -11,24 +11,23 @@ const useFetch = (url) => {
             fetch(url)
                 .then((response) => {
                     if (!response.ok) {
-                        throw Error("Cannot Fetch Data");
+                        throw Error("Cannot Fetch Data!");
                     }
-                    return response.json(); //parsing
+                    return response.json(); //parsing 
                 })
                 .then((data) => {
                     setAllData(data);
-                    setLoading(false); //stop loading after you have gotten your dat
+                    setLoading(false);
                     setError(null);
                 })
                 .catch((err) => {
                     setError(err.message);
-                    setLoading(false); //stop loading incase you encounter an error
-                })
-        }, 1000); //a minute guys
+                    setLoading(false);
+                });
+        }, 1000)
     }, [url]);
 
-    return { allData, error, loading }
+    return { allData, loading, error }
 
 }
-
 export default useFetch;

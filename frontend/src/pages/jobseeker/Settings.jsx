@@ -1,7 +1,7 @@
+
 import { FaUserCircle, FaCamera } from "react-icons/fa";
 
-
-const JobSeekerSettings = () => {
+const SeekerSettings = () => {
     return (
         <div className="p-3">
             <div className="mb-4">
@@ -100,6 +100,6 @@ const JobSeekerSettings = () => {
             </div>
         </div>
     );
-}
+};
 
-export default JobSeekerSettings;
+export default SeekerSettings;

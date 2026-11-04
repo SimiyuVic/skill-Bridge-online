@@ -33,6 +33,6 @@ const AdminJobSeeker = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminJobSeeker;

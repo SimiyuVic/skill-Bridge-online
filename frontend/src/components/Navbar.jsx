@@ -1,16 +1,12 @@
-
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
             <div className="container">
 
                 {/* Logo */}
-                <Link
-                    className="navbar-brand fw-bold fs-4"
-                    to="/"
-                >
+                <Link className="navbar-brand fw-bold fs-4" to="/">
                     skill<span className="text-primary">Bridge</span>
                 </Link>
 
@@ -28,90 +24,61 @@ const Navbar = () => {
                 </button>
 
                 {/* Navigation */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-
+                <div
+                    className="collapse navbar-collapse"
+                    id="navbarNav"
+                >
                     <ul className="navbar-nav mx-auto gap-lg-2">
 
                         <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link fw-medium ${isActive
-                                        ? "text-primary fw-bold"
-                                        : "text-dark"
-                                    }`
-                                }
+                            <Link
+                                className="nav-link active fw-medium"
+                                aria-current="page"
                                 to="/"
                             >
                                 Home
-                            </NavLink>
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link fw-medium ${isActive
-                                        ? "text-primary fw-bold"
-                                        : "text-dark"
-                                    }`
-                                }
-                                to="/all-jobs"
+                            <Link
+                                className="nav-link"
+                                to="all-jobs"
                             >
-                                Browse Jobs
-                            </NavLink>
+                                Find Jobs
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link fw-medium ${isActive
-                                        ? "text-primary fw-bold"
-                                        : "text-dark"
-                                    }`
-                                }
-                                to="/employers"
-                            >
-                                For Employers
-                            </NavLink>
-                        </li>
-
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link fw-medium ${isActive
-                                        ? "text-primary fw-bold"
-                                        : "text-dark"
-                                    }`
-                                }
-                                to="/about-us"
+                            <Link
+                                className="nav-link"
+                                to="about-us"
                             >
                                 About Us
-                            </NavLink>
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link fw-medium ${isActive
-                                        ? "text-primary fw-bold"
-                                        : "text-dark"
-                                    }`
-                                }
-                                to="/contact-us"
+                            <Link
+                                className="nav-link"
+                                to="contact-us"
                             >
-                                Contact Us
-                            </NavLink>
+                                Contact
+                            </Link>
                         </li>
 
                     </ul>
 
-                    {/* Right Side Buttons */}
-
-                    <Link
-                        to="/signup"
-                        className="btn  px-3 btn btn-primary"
-                    >
-                        Get Started
-                    </Link>
+                    {/* Get Started */}
+                    <div className="d-flex mt-3 mt-lg-0">
+                        <Link
+                            to="/signup"
+                            className="btn btn-primary px-4 py-2 fw-semibold"
+                        >
+                            Get Started
+                            <i className="bi bi-arrow-right ms-2"></i>
+                        </Link>
+                    </div>
 
                 </div>
             </div>

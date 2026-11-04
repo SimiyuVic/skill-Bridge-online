@@ -39,6 +39,6 @@ const AdminSettings = () => {
             </div>
         </div>
     );
-}
+};
 
 export default AdminSettings;

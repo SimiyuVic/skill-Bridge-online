@@ -7,7 +7,7 @@ const JobCards = ({ allJobs }) => {
             <div className="row mt-2">
                 {
                     allJobs.map((job) => (
-                        <div className="col-md-4 mb-4" key={job.id}>
+                        <div className=" col-lg-4 mb-4" key={job.id}>
                             <div className="card h-100 border-0 shadow-sm rounded-4 p-3">
 
                                 {/* Job Title + Type */}
@@ -24,7 +24,7 @@ const JobCards = ({ allJobs }) => {
                                 {/* Location */}
                                 <p className="text-muted mb-2">
                                     <CiLocationOn className="me-1" />
-                                    {job.companyLocation}
+                                    {job.location}
                                 </p>
 
                                 {/* Company */}
@@ -45,7 +45,7 @@ const JobCards = ({ allJobs }) => {
 
                                     <Link 
                                     className="btn btn-primary btn-sm rounded-pill px-3"
-                                    to={`/job-description/${job.id}`}
+                                    to={`/job-details/${job.id}`}
                                     >
                                         More Details
                                     </Link>

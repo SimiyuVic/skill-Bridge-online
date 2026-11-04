@@ -31,8 +31,8 @@ const JobPost = () => {
 
                     <div className="mb-3">
                         <label className="form-label">Employment Type</label>
-                        <select className="form-select" defaultValue="">
-                            <option value="" disabled>Select employment type</option>
+                        <select className="form-select">
+                            <option value="">Select employment type</option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
                             <option value="Contract">Contract</option>
@@ -61,8 +61,8 @@ const JobPost = () => {
 
                     <div className="mb-3">
                         <label className="form-label">Required Experience</label>
-                        <select className="form-select" defaultValue="">
-                            <option value="" disabled>Select experience level</option>
+                        <select className="form-select">
+                            <option value="">Select experience level</option>
                             <option value="No experience">No experience</option>
                             <option value="Less than 1 year">Less than 1 year</option>
                             <option value="1-2 years">1-2 years</option>
@@ -90,6 +90,6 @@ const JobPost = () => {
             </form>
         </div>
     );
-}
+};
 
 export default JobPost;

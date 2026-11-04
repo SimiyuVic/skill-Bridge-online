@@ -1,8 +1,8 @@
+
 import { Link } from "react-router-dom";
 import { MdWorkOutline, MdOutlineDescription } from "react-icons/md";
 
-
-const JobSeekerDashboard = () => {
+const JobSeekerdashboard = () => {
     return (
         <div className="p-3">
             <div className="mb-4">
@@ -93,6 +93,6 @@ const JobSeekerDashboard = () => {
             </div>
         </div>
     );
-}
+};
 
-export default JobSeekerDashboard;
+export default JobSeekerdashboard;

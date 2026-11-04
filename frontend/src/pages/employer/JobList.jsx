@@ -37,6 +37,6 @@ const JobList = () => {
             </div>
         </div>
     );
-}
+};
 
 export default JobList;

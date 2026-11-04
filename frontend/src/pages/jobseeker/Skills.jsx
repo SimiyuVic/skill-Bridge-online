@@ -1,5 +1,5 @@
-import { MdCode, MdSchool } from "react-icons/md";
 
+import { MdCode, MdSchool } from "react-icons/md";
 
 const Skills = () => {
     return (
@@ -111,6 +111,6 @@ const Skills = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Skills;

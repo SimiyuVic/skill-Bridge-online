@@ -1,4 +1,5 @@
-const Employers = () => {
+
+const AdminEmployer = () => {
     return (
         <div className="p-3">
             <div className="mb-4">
@@ -30,6 +31,6 @@ const Employers = () => {
             </div>
         </div>
     );
-}
+};
 
-export default Employers;
+export default AdminEmployer;

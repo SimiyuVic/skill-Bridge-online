@@ -1,23 +1,12 @@
 
-import { useState } from "react";
 import { MdBusiness } from "react-icons/md";
 import { FaCamera } from "react-icons/fa";
 
 const EmployerSettings = () => {
-    const [logo, setLogo] = useState(null);
-
-    const handleLogoChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            setLogo(URL.createObjectURL(file));
-        }
-    };
-
     return (
         <div className="p-3">
             <div className="mb-4">
-                <h3 className="fw-bold mb-1">Company Settings</h3>
+                <h3 className="fw-bold mb-1">Settings</h3>
                 <p className="text-muted mb-0">
                     Manage your company profile and account information.
                 </p>
@@ -28,37 +17,21 @@ const EmployerSettings = () => {
 
                 <div className="d-flex align-items-center gap-3">
                     <div
-                        className="d-flex align-items-center justify-content-center bg-light border rounded-3 overflow-hidden"
-                        style={{ width: "90px", height: "90px", flexShrink: 0 }}
+                        className="d-flex align-items-center justify-content-center bg-light border rounded-3"
+                        style={{ width: "90px", height: "90px" }}
                     >
-                        {logo ? (
-                            <img
-                                src={logo}
-                                alt="Company logo preview"
-                                className="w-100 h-100"
-                                style={{ objectFit: "contain" }}
-                            />
-                        ) : (
-                            <MdBusiness size={55} className="text-secondary" />
-                        )}
+                        <MdBusiness size={55} className="text-secondary" />
                     </div>
 
                     <div>
-                        <p className="fw-semibold mb-1">Upload Company Logo</p>
+                        <p className="fw-semibold mb-1">Company Logo</p>
                         <p className="text-muted small mb-2">
-                            Choose a logo to help candidates identify your company.
+                            Upload your company logo to help candidates identify your business.
                         </p>
-
-                        <label className="btn btn-outline-secondary btn-sm mb-0">
+                        <button className="btn btn-outline-secondary btn-sm">
                             <FaCamera className="me-2" />
-                            Choose Logo
-                            <input
-                                type="file"
-                                accept="image/*"
-                                hidden
-                                onChange={handleLogoChange}
-                            />
-                        </label>
+                            Update Logo
+                        </button>
                     </div>
                 </div>
             </div>
@@ -126,7 +99,6 @@ const EmployerSettings = () => {
             </div>
 
             <button
-                type="button"
                 className="btn text-white px-4"
                 style={{ backgroundColor: "#3368A0" }}
             >

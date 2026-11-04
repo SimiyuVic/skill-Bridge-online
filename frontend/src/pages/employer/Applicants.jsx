@@ -1,3 +1,4 @@
+
 const Applicants = () => {
     return (
         <div className="p-3">
@@ -8,34 +9,24 @@ const Applicants = () => {
                 </p>
             </div>
 
-            <div className="table-responsive">
-                <table className="table table-hover align-middle">
-                    <thead className="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Applicant Name</th>
-                            <th>Job Title</th>
-                            <th>Email</th>
-                            <th>Date Applied</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div className="d-flex justify-content-between align-items-center gap-3 mb-3">
+                <div>
+                    <h5 className="fw-semibold mb-1">All Applicants</h5>
+                    <small className="text-muted">
+                        Manage applications and review potential candidates.
+                    </small>
+                </div>
 
-                    <tbody>
-                        <tr>
-                            <td colSpan="7" className="text-center py-5">
-                                <h6 className="fw-semibold">No applications yet</h6>
-                                <p className="text-muted small mb-0">
-                                    Applications for your posted jobs will appear here.
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            </div>
+
+            <div className="border rounded-3 p-4 text-center">
+                <h6 className="fw-semibold">No applications to display yet</h6>
+                <p className="text-muted mb-0">
+                    Candidates who apply for your posted jobs will appear here.
+                </p>
             </div>
         </div>
     );
-}
+};
 
 export default Applicants;

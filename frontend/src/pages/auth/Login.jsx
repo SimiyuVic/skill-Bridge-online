@@ -1,70 +1,103 @@
+
 import { Link } from "react-router-dom";
 
 const Login = () => {
     return (
-        <div>
-            <div className="container my-3">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card shadow-sm border-0">
-                            <div className="row">
-                                <div className="col-md-6 bg-primary text-light">
-                                    <h2 className="my-2 p-4">
-                                        Welcome Back
-                                    </h2>
-                                    <p className="my-2 p-4">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Voluptatibus enim sit, dignissimos iure ab beatae hic?
-                                    </p>
+        <div className="container my-5">
+            <div className="row justify-content-center">
+                <div className="col-md-9 col-lg-8">
+                    <div className="card border-0 shadow-sm overflow-hidden">
+                        <div className="row g-0">
 
-                                </div>
-                                <div className="col-md-6 p-4">
-                                    <form >
-                                        <div className="mb-3">
-                                            <label htmlFor="name" className=" py-2">
-                                                Your Email
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="e.g vicor@mail.com"
-                                                className="form-control my-2 p-2"
-                                            />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="name" className=" py-2">
-                                                Your Password
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="Enter your password"
-                                                className="form-control my-2 p-2"
-                                            />
-                                        </div>
-                                        <button className="btn btn-primary w-100">
-                                            Login
-                                        </button>
-                                        <h6 className="my-2">
-                                            Don't have an account?
-                                            <Link 
-                                            className="ms-2" 
-                                            style={{textDecoration: "none"}}
-                                            to="/signup"
-                                            >
-                                                Register Now
-                                            </Link>
-                                        </h6>
-                                        <h6 className="text-center text-danger">
-                                            Reset Password
-                                        </h6>
-                                    </form>
+                            {/* Left Side */}
+                            <div className="col-md-6 bg-primary text-white d-flex align-items-center">
+                                <div className="p-4 p-lg-5">
+                                    <h2 className="fw-bold mb-3">
+                                        Welcome Back!
+                                    </h2>
+
+                                    <p className="mb-0">
+                                        Login to your SkillBridge account and
+                                        continue exploring opportunities,
+                                        managing jobs, and connecting with
+                                        employers.
+                                    </p>
                                 </div>
                             </div>
+
+                            {/* Login Form */}
+                            <div className="col-md-6 p-4 p-lg-5">
+                                <div className="text-center mb-4">
+                                    <h3 className="fw-bold">Login</h3>
+                                    <p className="text-muted mb-0">
+                                        Enter your details to continue
+                                    </p>
+                                </div>
+
+                                <form>
+                                    <div className="mb-3">
+                                        <label htmlFor="email" className="form-label">
+                                            Email Address
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            placeholder="e.g. james@gmail.com"
+                                            className="form-control"
+                                        />
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <label htmlFor="password" className="form-label">
+                                            Password
+                                        </label>
+
+                                        <input
+                                            type="password"
+                                            id="password"
+                                            placeholder="Enter your password"
+                                            className="form-control"
+                                        />
+                                    </div>
+
+                                    <div className="text-end mb-3">
+                                        <Link
+                                            to="/forgot-password"
+                                            className="text-decoration-none small"
+                                        >
+                                            Forgot Password?
+                                        </Link>
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary w-100"
+                                    >
+                                        Login
+                                    </button>
+
+                                    <div className="text-center mt-4">
+                                        <span className="text-muted">
+                                            Don't have an account?
+                                        </span>
+
+                                        <Link
+                                            to="/signup"
+                                            className="ms-2 text-decoration-none fw-semibold"
+                                        >
+                                            Register
+                                        </Link>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Login;

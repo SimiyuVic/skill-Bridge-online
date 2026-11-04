@@ -1,12 +1,10 @@
-import DashboardNav from "../components/DashboardNavBar";
-import SideBar from "../components/SideBar";
-import { AiFillDashboard } from "react-icons/ai";
-import { FaUsers } from "react-icons/fa6";
-import { MdCreateNewFolder } from "react-icons/md";
-import { FaList } from "react-icons/fa";
-import { IoMdCog } from "react-icons/io";
-import { Outlet } from "react-router-dom";
 
+import DashboardNavBar from "../components/DashboardNavBar";
+import SideBar from "../components/SideBar";
+import { Outlet } from "react-router-dom";
+import { AiOutlineDashboard } from "react-icons/ai";
+import { FaUsers, FaCog } from "react-icons/fa";
+import { MdWork, MdPostAdd } from "react-icons/md";
 
 const EmployerLayout = () => {
 
@@ -14,7 +12,17 @@ const EmployerLayout = () => {
         {
             name: "Dashboard",
             path: "/employer",
-            icon: <AiFillDashboard />
+            icon: <AiOutlineDashboard />
+        },
+        {
+            name: "Post a Job",
+            path: "/employer/post-job",
+            icon: <MdPostAdd />
+        },
+        {
+            name: "My Jobs",
+            path: "/employer/jobs",
+            icon: <MdWork />
         },
         {
             name: "Applicants",
@@ -22,52 +30,30 @@ const EmployerLayout = () => {
             icon: <FaUsers />
         },
         {
-            name: "Create Jobs",
-            path: "/employer/create-job",
-            icon: <MdCreateNewFolder />
-        },
-        {
-            name: "Posted Jobs",
-            path: "/employer/jobs",
-            icon: <FaList />
-        },
-        {
             name: "Settings",
             path: "/employer/settings",
-            icon: <IoMdCog />
-        },
+            icon: <FaCog />
+        }
     ];
 
-    return ( 
-        <div>
-            <div className="d-flex m-3">
+    return (
+        <div className="layout">
+            <SideBar links={employerLinks} title="Employer Dashboard" />
+
+            <main className="content">
                 <div
-                    className="card p-3 border-0 shadow-sm text-light me-3"
-                    style={{
-                        backgroundColor: "#086288",
-                        width: "300px",
-                        minHeight: "90vh"
-                    }}
+                    className="card p-3 border-0 shadow-sm text-white"
+                    style={{ backgroundColor: "#66A3BF" }}
                 >
-                    <SideBar links={ employerLinks } title="Employer Dashboard" />
+                    <DashboardNavBar />
                 </div>
 
-                <div className="flex-grow-1">
-                    <div
-                        className="card p-3"
-                        style={{
-                            backgroundColor: "#4D8DBA",
-                        }}
-                    >
-                        <DashboardNav />
-                    </div>
-                    <div>
-                        <Outlet />
-                    </div>
+                <div className="mt-3">
+                    <Outlet />
                 </div>
-            </div>
+            </main>
         </div>
-     );
-}
- 
+    );
+};
+
 export default EmployerLayout;
