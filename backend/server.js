@@ -3,11 +3,20 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/config.js";
 import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import cors from "cors";
 
 dotenv.config()
 //create an instance of the express application
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        ""
+    ],
+    credentials: true
+}));
+
 const MYPORT = process.env.PORT;
 
 //health check

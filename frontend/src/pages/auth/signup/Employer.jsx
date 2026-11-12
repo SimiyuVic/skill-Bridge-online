@@ -1,7 +1,36 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
-import { Link } from "react-router-dom";
 
 const EmployerSignup = () => {
+
+    const [fullname, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState("");
+    const [password, setPassword] = useState("");
+
+    const redirect = useNavigate();
+
+    const registerEmployer = async (e) => {
+        e.preventDefault();
+        try {
+            const employerData = { fullname, email, phone, location, password };
+
+            const response = await axios.post("http://localhost:5001/api/v1/employer/register", employerData, {
+                withCredentials: true
+            });
+
+            redirect("/login");
+            toast.success(response.data.message);
+        }
+        catch (error) {
+            toast.error(error.response.data.message);
+        }
+    }
+
     return (
         <div className="container my-5">
             <div className="row justify-content-center">
@@ -44,7 +73,7 @@ const EmployerSignup = () => {
                                     </p>
                                 </div>
 
-                                <form>
+                                <form onSubmit={registerEmployer}>
 
                                     {/* Company Name */}
                                     <div className="mb-3">
@@ -60,6 +89,8 @@ const EmployerSignup = () => {
                                             id="companyName"
                                             placeholder="e.g. Travel Companies Ltd"
                                             className="form-control"
+                                            value={fullname}
+                                            onChange={(e) => setFullName(e.target.value)}
                                         />
                                     </div>
 
@@ -77,6 +108,8 @@ const EmployerSignup = () => {
                                             id="companyEmail"
                                             placeholder="e.g. info@travelcompanies.co.ke"
                                             className="form-control"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
 
@@ -94,6 +127,8 @@ const EmployerSignup = () => {
                                             id="phone"
                                             placeholder="e.g. +254709090909"
                                             className="form-control"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
                                         />
                                     </div>
 
@@ -111,6 +146,8 @@ const EmployerSignup = () => {
                                             id="location"
                                             placeholder="e.g. Waiyaki Way, Nairobi"
                                             className="form-control"
+                                            value={location}
+                                            onChange={(e) => setLocation(e.target.value)}
                                         />
                                     </div>
 
@@ -128,6 +165,8 @@ const EmployerSignup = () => {
                                             id="password"
                                             placeholder="Create a password"
                                             className="form-control"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
                                         />
                                     </div>
 

@@ -43,7 +43,6 @@ export const loginUser = async(req, res)=>{
             {
                 id: user._id,
                 role: user.role,
-                fullname: user.fullname,
             },
             process.env.JWT_SECRET,
             {
@@ -51,11 +50,19 @@ export const loginUser = async(req, res)=>{
             }
         );
 
+        res.cookie("skillBridge-online",token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/",
+            maxAge: 2 * 24 * 60 * 60 * 1000
+        });
+
         return res.status(200).json({
             success: true,
             message: `Welcome back ${user.fullname}`,
             token
-        })
+        });
 
     }
     catch(error)
