@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/config.js";
 import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import jobSeekerRoutes from "./routes/jobseeker.routes.js";
 import cors from "cors";
 
 dotenv.config()
@@ -30,6 +31,7 @@ app.use("/api/v1/health", (req, res)=>{
 //routes to the controllers
 app.use("/api/v1/employer", employerRoutes); 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/jobseeker", jobSeekerRoutes);
 
 
 const startServer = async () => {

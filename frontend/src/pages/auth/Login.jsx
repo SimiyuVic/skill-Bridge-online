@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const redirect = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async(e)=>{
         e.preventDefault();
@@ -18,6 +20,24 @@ const Login = () => {
             const response = await axios.post("http://localhost:5001/api/v1/auth/login", userData, {
                 withCredentials: true
             });
+            console.log(response.data.user);
+
+            //redirect to the correct dashboard
+            switch(response.data.user)
+            {
+                case "admin":
+                    redirect("/admin");
+                    break;
+                case "employer":
+                    redirect("/employer");
+                    break;
+                case "jobseeker":
+                    redirect("/job-seeker")
+                    break;
+                default:
+                    redirect("/login");
+                    break;
+            }
 
             toast.success(response.data.message);
         }
@@ -100,12 +120,22 @@ const Login = () => {
                                         </Link>
                                     </div>
 
-                                    <button
+                                    {!loading &&
+                                        
+                                        <button
                                         type="submit"
                                         className="btn btn-primary w-100"
                                     >
                                         Login
-                                    </button>
+                                    </button>}
+                                    {   
+                                        
+                                        <button onClick={()=>setLoading(true)}
+                                        type="submit"
+                                        className="btn btn-warning w-100"
+                                    >
+                                        Loging In . . .
+                                    </button>}
 
                                     <div className="text-center mt-4">
                                         <span className="text-muted">

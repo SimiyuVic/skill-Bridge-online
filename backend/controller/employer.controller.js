@@ -28,6 +28,16 @@ export const createEmployer = async(req, res) => {
             });
         }
 
+        //check phone number
+        const existingPhone = await User.findOne({phone});
+        if(existingPhone)
+        {
+            return res.status(409).json({
+                success: false,
+                message: "Phone number already taken"
+            });
+        }
+
         //check password and hash it or encrypt it
         if(password.length < 8)
         {
@@ -47,7 +57,7 @@ export const createEmployer = async(req, res) => {
             location,
             password: hashedPassword,
             role: "employer"
-        })
+        });
 
         await newEmployer.save(); //saves the new employer permanantly to the database.
 

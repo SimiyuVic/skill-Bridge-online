@@ -1,7 +1,37 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const JobSeeker = () => {
+
+    const [fullname, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const redirect = useNavigate();
+
+    const registerUser = async(e)=>{
+        e.preventDefault();
+        try
+        {
+           const userData = { fullname, email, phone, password } ;
+
+           const response = await axios.post("http://localhost:5001/api/v1/jobseeker/register", userData, {
+            withCredentials: true
+           });
+
+           redirect("/login");
+           toast.success(response.data.message);
+
+        }
+        catch(error)
+        {
+            toast.error(error.response.data.message)
+        }
+    }
+
     return (
         <div className="container my-5">
             <div className="row justify-content-center">
@@ -43,7 +73,7 @@ const JobSeeker = () => {
                                     </p>
                                 </div>
 
-                                <form>
+                                <form onSubmit={registerUser}>
 
                                     {/* Full Name */}
                                     <div className="mb-3">
@@ -59,6 +89,8 @@ const JobSeeker = () => {
                                             id="fullName"
                                             placeholder="e.g. James Burton"
                                             className="form-control"
+                                            value={fullname}
+                                            onChange={(e)=>setFullName(e.target.value)}
                                         />
                                     </div>
 
@@ -76,6 +108,8 @@ const JobSeeker = () => {
                                             id="email"
                                             placeholder="e.g. james@gmail.com"
                                             className="form-control"
+                                            value={email}
+                                            onChange={(e)=>setEmail(e.target.value)}
                                         />
                                     </div>
 
@@ -93,6 +127,8 @@ const JobSeeker = () => {
                                             id="phone"
                                             placeholder="e.g. +254709090909"
                                             className="form-control"
+                                            value={phone}
+                                            onChange={(e)=>setPhone(e.target.value)}
                                         />
                                     </div>
 
@@ -110,6 +146,8 @@ const JobSeeker = () => {
                                             id="password"
                                             placeholder="Create a password"
                                             className="form-control"
+                                            value={password}
+                                            onChange={(e)=>setPassword(e.target.value)}
                                         />
                                     </div>
 
