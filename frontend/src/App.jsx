@@ -6,7 +6,7 @@ import AllJobs from "./pages/AllJobs"
 import About from "./pages/AboutUs"
 import Contact from "./pages/ContactUs"
 import JobDetails from "./pages/JobDetails"
-import { Toaster } from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast"
 import Login from "./pages/auth/Login"
 import SignUp from "./pages/auth/SignUp"
 import JobSeeker from "./pages/auth/signup/JobSeeker"
@@ -30,15 +30,47 @@ import JobSeekerApplication from "./pages/jobseeker/Applications.jsx"
 import SeekerHelp from "./pages/jobseeker/Help.jsx"
 import SeekerSettings from "./pages/jobseeker/Settings.jsx"
 import Skills from "./pages/jobseeker/Skills.jsx"
+import { useEffect } from "react"
+import axios from "axios"
+import { useSelector, useDispatch } from "react-redux"
+import { authActions } from "./store/auth.js"
 
 function App() {
+
+  const backendLink = useSelector((state) => state.prod.link);
+  const dispatch = useDispatch();
+
+  const checkCookie = async () => {
+    try {
+      const response = await axios.get(`${backendLink}/api/v1/auth/check-cookie`, {
+        withCredentials: true
+      });
+
+      if(response.data.message === true)
+      {
+        dispatch(authActions.login());
+      }
+      else
+      {
+        dispatch(authActions.logout());
+      }
+    }
+    catch (error) {
+      toast.error(error.response.data.message);
+      dispatch(authActions.logout());
+    }
+  }
+
+  useEffect(() => {
+    checkCookie();
+  }, []);
 
   return (
     <div>
       <Toaster />
 
       <Routes>
-        <Route element={ <PublicLayout /> } >
+        <Route element={<PublicLayout />} >
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/all-jobs" element={<AllJobs />} />
@@ -55,31 +87,31 @@ function App() {
 
 
         {/* Admin route */}
-        <Route path="/admin" element={ <AdminLayout /> } >
-          <Route index element={ <AdminDashboard /> } />
-          <Route path="job-seekers" element={ <AdminJobSeeker /> } />
-          <Route path="employers" element={ <AdminEmployer /> } />
-          <Route path="settings" element={ <AdminSettings /> } />
-          <Route path="jobs" element={ <Jobs /> } />
+        <Route path="/admin" element={<AdminLayout />} >
+          <Route index element={<AdminDashboard />} />
+          <Route path="job-seekers" element={<AdminJobSeeker />} />
+          <Route path="employers" element={<AdminEmployer />} />
+          <Route path="settings" element={<AdminSettings />} />
+          <Route path="jobs" element={<Jobs />} />
         </Route>
 
         {/* Employer Routes */}
-        <Route path="/employer" element={ <EmployerLayout /> } >
-          <Route index element={ <EmployerDashboard /> } />
-          <Route path="jobs" element={ <JobList />  } />
-          <Route path="applicants" element={ <Applicants /> } />
-          <Route path="post-job" element={ <JobPost /> } />
-          <Route path="settings" element={ <EmployerSettings /> } />
+        <Route path="/employer" element={<EmployerLayout />} >
+          <Route index element={<EmployerDashboard />} />
+          <Route path="jobs" element={<JobList />} />
+          <Route path="applicants" element={<Applicants />} />
+          <Route path="post-job" element={<JobPost />} />
+          <Route path="settings" element={<EmployerSettings />} />
         </Route>
 
 
         {/* Job seekers routes */}
-        <Route path="/job-seeker" element={ <JobSeekerlayout />}>
-          <Route index element={ <JobSeekerdashboard /> } />
-          <Route path="applications" element={ <JobSeekerApplication /> } />
-          <Route path="skills" element={ <Skills /> } />
-          <Route path="settings" element={ <SeekerSettings /> } />
-          <Route path="help" element={ <SeekerHelp /> } />
+        <Route path="/job-seeker" element={<JobSeekerlayout />}>
+          <Route index element={<JobSeekerdashboard />} />
+          <Route path="applications" element={<JobSeekerApplication />} />
+          <Route path="skills" element={<Skills />} />
+          <Route path="settings" element={<SeekerSettings />} />
+          <Route path="help" element={<SeekerHelp />} />
         </Route>
       </Routes>
 

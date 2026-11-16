@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/auth.js";
 
 const Login = () => {
 
@@ -9,6 +11,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const redirect = useNavigate();
     const [loading, setLoading] = useState(false);
+    const backendLink = useSelector((state)=>state.prod.link);
+    const dispatch = useDispatch();
+    //console.log(backendLink);
 
     const handleLogin = async(e)=>{
         e.preventDefault();
@@ -17,10 +22,10 @@ const Login = () => {
         {
             const userData = { email, password };
 
-            const response = await axios.post("http://localhost:5001/api/v1/auth/login", userData, {
+            const response = await axios.post(`${backendLink}/api/v1/auth/login`, userData, {
                 withCredentials: true
             });
-            console.log(response.data.user);
+            //console.log(response.data.user);
 
             //redirect to the correct dashboard
             switch(response.data.user)
@@ -39,6 +44,7 @@ const Login = () => {
                     break;
             }
 
+            dispatch(authActions.login()); //tell the systme that the user has logged in
             toast.success(response.data.message);
         }
         catch(error)
@@ -128,14 +134,14 @@ const Login = () => {
                                     >
                                         Login
                                     </button>}
-                                    {   
+                                    {/* {   
                                         
                                         <button onClick={()=>setLoading(true)}
                                         type="submit"
                                         className="btn btn-warning w-100"
                                     >
                                         Loging In . . .
-                                    </button>}
+                                    </button>} */}
 
                                     <div className="text-center mt-4">
                                         <span className="text-muted">

@@ -5,6 +5,7 @@ import employerRoutes from "./routes/employer.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import jobSeekerRoutes from "./routes/jobseeker.routes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config()
 //create an instance of the express application
@@ -17,7 +18,7 @@ app.use(cors({
     ],
     credentials: true
 }));
-
+app.use(cookieParser());
 const MYPORT = process.env.PORT;
 
 //health check

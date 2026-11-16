@@ -2,14 +2,12 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const loginUser = async(req, res)=>{
-    try
-    {
+export const loginUser = async (req, res) => {
+    try {
         const { email, password } = req.body;
 
         //form validation
-        if(!email || !password)
-        {
+        if (!email || !password) {
             return res.status(400).json({
                 success: false,
                 message: "All Fields are Required!"
@@ -18,10 +16,9 @@ export const loginUser = async(req, res)=>{
 
         const normalizedEmail = email.toLowerCase().trim();
         //cehck if user exists
-        const user = await User.findOne({ email: normalizedEmail}).select("+password");
+        const user = await User.findOne({ email: normalizedEmail }).select("+password");
 
-        if(!user)
-        {
+        if (!user) {
             return res.status(401).json({
                 success: false,
                 message: "Invalid Credentials"
@@ -30,8 +27,7 @@ export const loginUser = async(req, res)=>{
 
         //compared typed user password to the hashed one.
         const isMatch = await bcrypt.compare(password, user.password);
-        if(!isMatch)
-        {
+        if (!isMatch) {
             return res.status(401).json({
                 success: false,
                 message: "Invalid Credentials"
@@ -50,7 +46,7 @@ export const loginUser = async(req, res)=>{
             }
         );
 
-        res.cookie("skillBridge-online",token, {
+        res.cookie("skillBridgeOnline", token, {
             httpOnly: true,
             secure: true,
             sameSite: "none",
@@ -65,12 +61,34 @@ export const loginUser = async(req, res)=>{
         });
 
     }
-    catch(error)
-    {
+    catch (error) {
         console.log(error);
         return res.status(500).json({
             success: false,
             message: "Something went wrong"
+        });
+    }
+};
+
+//check cookie
+export const checkCookie = async (req, res) => {
+    try {
+        const readCookie = req.cookies.skillBridgeOnline;
+        if (readCookie) {
+            return res.status(200).json({
+                message: true
+            })
+        }
+        return res.status(200).json({
+            message: false
+        });
+
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong!"
         });
     }
 }
