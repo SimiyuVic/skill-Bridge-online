@@ -37,7 +37,7 @@ export const loginUser = async (req, res) => {
         //create a token
         const token = jwt.sign(
             {
-                id: user._id,
+                userId: user._id,
                 role: user.role,
             },
             process.env.JWT_SECRET,
@@ -90,5 +90,24 @@ export const checkCookie = async (req, res) => {
             success: false,
             message: "Something went wrong!"
         });
+    }
+};
+
+//fetch user details
+export const getUserDetails = async (req, res) => {
+    try {
+        const { user } = req;
+
+        res.status(200).json({
+            success: true,
+            user
+        });
+    }
+    catch (error) {
+        //console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong"
+        })
     }
 }

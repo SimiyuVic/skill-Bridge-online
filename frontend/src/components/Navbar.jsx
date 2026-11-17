@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+    const checkLogin = useSelector((state)=>state.auth.isLoggedIn);
+
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
             <div className="container">
@@ -70,7 +75,9 @@ const Navbar = () => {
                     </ul>
 
                     {/* Get Started */}
-                    <div className="d-flex mt-3 mt-lg-0">
+                    {!checkLogin &&
+                        
+                        <div className="d-flex mt-3 mt-lg-0">
                         <Link
                             to="/signup"
                             className="btn btn-primary px-4 py-2 fw-semibold"
@@ -78,7 +85,18 @@ const Navbar = () => {
                             Get Started
                             <i className="bi bi-arrow-right ms-2"></i>
                         </Link>
-                    </div>
+                    </div>}
+                    {checkLogin &&
+                        
+                        <div className="d-flex mt-3 mt-lg-0">
+                        <Link
+                            to="/signup"
+                            className="btn btn-primary px-4 py-2 fw-semibold"
+                        >
+                            View Profile
+                            <i className="bi bi-arrow-right ms-2"></i>
+                        </Link>
+                    </div>}
 
                 </div>
             </div>

@@ -1,18 +1,56 @@
+import { useEffect } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store/auth.js";
+import toast from "react-hot-toast"
+import { Link } from "react-router-dom";
+
 
 
 
 const DashboardNavBar = () => {
+
+    const backendLink = useSelector((state)=>state.prod.link);
+    const user = useSelector((state)=>state.auth.user);
+    //console.log(user);
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        const getDetails = async()=>{
+            try 
+            {
+                const response = await axios.get(`${backendLink}/api/v1/auth/user-details`, {
+                    withCredentials: true
+                });
+
+                //console.log(response.data.user);
+                dispatch(authActions.login(response?.data?.user));
+            } 
+            catch (error) {
+               toast.error(error.response?.data?.message); 
+            }
+        }
+        getDetails();   
+    }, []);
+
     return ( 
         <div>
             <nav className="d-flex justify-content-between">
                 <div className="text-light">
                     <h5>
-                       Welcome Admin  {/* we will replace this with username */}
+                       Welcome { user?.fullname }  {/* we will replace this with username */}
                     </h5>
                     <p>
-                        One central place to manage all your data.
+                        Your email: { user?.email }
                     </p>
+                    <p>Your Phone : {user?.phone  }</p>
+                    <Link 
+                        className="btn btn-primary"
+                        to="/"
+                    >
+                        Home
+                    </Link>
                 </div>
                 <div>
                     <button 
