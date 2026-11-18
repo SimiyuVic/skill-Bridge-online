@@ -1,102 +1,88 @@
-import { useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
 
-    const checkLogin = useSelector((state)=>state.auth.isLoggedIn);
-
+    const loggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const user = useSelector((state) => state.auth.user);
+    //console.log(user)
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
             <div className="container">
 
-                {/* Logo */}
                 <Link className="navbar-brand fw-bold fs-4" to="/">
                     skill<span className="text-primary">Bridge</span>
                 </Link>
 
-                {/* Mobile Toggle */}
                 <button
                     className="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                {/* Navigation */}
-                <div
-                    className="collapse navbar-collapse"
-                    id="navbarNav"
-                >
+                <div className="collapse navbar-collapse" id="navbarNav">
+
                     <ul className="navbar-nav mx-auto gap-lg-2">
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link active fw-medium"
-                                aria-current="page"
-                                to="/"
-                            >
+                            <Link className="nav-link" to="/">
                                 Home
                             </Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link"
-                                to="all-jobs"
-                            >
+                            <Link className="nav-link" to="/all-jobs">
                                 Find Jobs
                             </Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link"
-                                to="about-us"
-                            >
+                            <Link className="nav-link" to="/about-us">
                                 About Us
                             </Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link"
-                                to="contact-us"
-                            >
+                            <Link className="nav-link" to="/contact-us">
                                 Contact
                             </Link>
                         </li>
 
                     </ul>
 
-                    {/* Get Started */}
-                    {!checkLogin &&
-                        
+                    {!loggedIn ? (
                         <div className="d-flex mt-3 mt-lg-0">
-                        <Link
-                            to="/signup"
-                            className="btn btn-primary px-4 py-2 fw-semibold"
-                        >
-                            Get Started
-                            <i className="bi bi-arrow-right ms-2"></i>
-                        </Link>
-                    </div>}
-                    {checkLogin &&
-                        
-                        <div className="d-flex mt-3 mt-lg-0">
-                        <Link
-                            to="/signup"
-                            className="btn btn-primary px-4 py-2 fw-semibold"
-                        >
-                            View Profile
-                            <i className="bi bi-arrow-right ms-2"></i>
-                        </Link>
-                    </div>}
+                            <Link to="/signup" className="btn btn-primary px-4">
+                                Get Started
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+
+                            <span className="fw-semibold">
+                                Hi, {user?.fullname}
+                            </span>
+
+                            <Link
+                                to={
+                                    user?.role === "admin"
+                                        ? "/admin"
+                                        : user?.role === "employer"
+                                        ? "/employer"
+                                        : "/job-seeker"
+                                }
+                                className="btn btn-primary px-4"
+                            >
+                                View Dashboard
+                            </Link>
+
+                        </div>
+                    )}
 
                 </div>
             </div>
