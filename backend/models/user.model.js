@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
         required: true, // try trim later
         select: false //when the user data will be fetched , password will not be among it
     },
+    avatar: {
+        type: String
+    },
     role: {
         type: String,
         required: true,

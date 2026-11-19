@@ -13,7 +13,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "profile-picture",
+    folder: "skillBridgeImages",
     allowed_formats: ["jpg", "png", "jpeg"],
 
     public_id: (req, file) => {

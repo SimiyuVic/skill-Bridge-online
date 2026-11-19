@@ -133,3 +133,31 @@ export const logoutUser = async (req, res) => {
         });
     }
 };
+
+//avatart upload
+export const avatarChange = async (req, res) => {
+    try {
+        const { user } = req;
+        const { file } = req;
+
+        if (!file) {
+            return res.status(400).json({
+                success: false,
+                message: "No Image selected"
+            })
+        }
+        user.avatar = file.path;
+        await user.save();
+
+        return res.status(201).json({
+            success: true,
+            message: "Avatar changed successfully"
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+}

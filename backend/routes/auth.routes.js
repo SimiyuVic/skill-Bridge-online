@@ -1,10 +1,12 @@
 import express from "express";
 import { 
+    avatarChange,
     checkCookie, 
     getUserDetails, 
     loginUser, 
     logoutUser } from "../controller/auth.controller.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
+import upload from "../middleware/image.middleware.js";
 
 const router = express.Router();
 //process login
@@ -20,5 +22,11 @@ router.get("/user-details",
 
 //logout users
 router.post("/logout", logoutUser);
+
+//update avatar
+router.patch("/change-avatar", 
+    authMiddleware.verifyToken,
+    upload.single("profile"),
+    avatarChange);
 
 export default router;

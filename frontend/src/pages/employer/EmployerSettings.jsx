@@ -1,11 +1,17 @@
 
 import { useState } from "react";
 import { FaUserCircle, FaCamera } from "react-icons/fa";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const EmployerSettings = () => {
 
     const [preview, setPreview] = useState("");
     const [avatar, setAvatar] = useState("");
+    const [loading, setLoading] = useState(false);
+    const backendLink = useSelector((state) => state.prod.link);
+    const userData = useSelector((state) => state.auth.user);
 
     //handle preview of images
     const handleAvatar = (e) => {
@@ -13,6 +19,30 @@ const EmployerSettings = () => {
         if (!file) return; //not selecting any image
         setAvatar(file);
         setPreview(URL.createObjectURL(file));
+    }
+
+    //change the avatar
+    const changeAvatar = async () => {
+
+        const imageUpload = new FormData();
+        imageUpload.append("profile", avatar);
+
+        try {
+            setLoading(true);
+            const response = await axios.patch(`${backendLink}/api/v1/auth/change-avatar`, imageUpload, {
+                withCredentials: true
+            });
+
+            toast.success(response.data.message);
+        }
+        catch (error) {
+            setLoading(false);
+            toast.error(error.response.data.message)
+        }
+        finally {
+            setLoading(false);
+        }
+
     }
 
     return (
@@ -28,7 +58,7 @@ const EmployerSettings = () => {
             {/* Profile Picture */}
             <div className="card shadow-sm border-0 p-4 mb-4">
 
-                <h5 className="fw-semibold mb-3">Profile Picture</h5>
+                <h5 className="fw-semibold mb-3">Company Logo</h5>
 
                 <div className="d-flex align-items-center gap-4 flex-wrap">
 
@@ -49,20 +79,26 @@ const EmployerSettings = () => {
                                 style={{ cursor: "pointer" }}
                             >
 
-                                {
-                                    preview ? (
-                                        <img 
-                                            src={preview}
-                                            className="w-100 h-100"
-                                            style={{objectFit: "cover"}}
-                                        />
-                                    ) : (
-                                        <FaUserCircle
-                                            size={100}
-                                            className="text-secondary"
-                                        />
-                                    )
-                                }
+                                {preview ? (
+                                    <img
+                                        src={preview}
+                                        alt="Selected avatar preview"
+                                        className="w-100 h-100"
+                                        style={{ objectFit: "cover" }}
+                                    />
+                                ) : userData?.avatar ? (
+                                    <img
+                                        src={userData.avatar}
+                                        alt="Current user avatar"
+                                        className="w-100 h-100"
+                                        style={{ objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    <FaUserCircle
+                                        size={100}
+                                        className="text-secondary"
+                                    />
+                                )}
 
 
                             </label>
@@ -76,13 +112,27 @@ const EmployerSettings = () => {
                             onChange={handleAvatar}
                         />
 
-                        <button
-                            type="button"
-                            className="btn btn-primary btn-sm mt-3"
-                        >
-                            <FaCamera className="me-2" />
-                            Change Picture
-                        </button>
+                        {
+                            !loading ? (
+                                <button
+                                    onClick={changeAvatar}
+                                    type="button"
+                                    className="btn btn-primary btn-sm mt-3"
+                                >
+                                    <FaCamera className="me-2" />
+                                    Change Avataar
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    disabled
+                                    className="btn btn-warning btn-sm mt-3"
+                                >
+                                    <FaCamera className="me-2" />
+                                    Changing Avatar . . .
+                                </button>
+                            )
+                        }
 
                     </div>
 
@@ -92,11 +142,11 @@ const EmployerSettings = () => {
                         <div className="p-3 rounded-3 bg-light border">
 
                             <h5 className="mb-1 fw-bold">
-                                Profile Picture
+                                Company Logo
                             </h5>
 
                             <p className="text-muted small mb-2">
-                                Upload a profile picture to help employers
+                                Upload a company logo to help jobseekers
                                 recognize you.
                             </p>
 
